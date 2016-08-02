@@ -40,41 +40,41 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
 }
 %>
 <%  
-	/* POST params: action, username, auth, id */
+  /* POST params: action, username, auth, id */
 
-	Boolean ok = true;
+  Boolean ok = true;
   String action = "";
-	String username = "";
-	String auth = "";
-	String id = "";
-	String output = "<error>Blank</error>";
+  String username = "";
+  String auth = "";
+  String id = "";
+  String output = "<error>Blank</error>";
   String apiReadRole = "API_READ_ROLE";
-	int recordCount = 0;
-	
-	/* check existence of required parameters */
-	if (request.getParameter("action") == null 
+  int recordCount = 0;
+  
+  /* check existence of required parameters */
+  if (request.getParameter("action") == null 
       || request.getParameter("username") == null 
       || request.getParameter("auth") == null 
       || request.getParameter("id") == null) {
-		
+    
     /* redirect to API instructions */
     response.sendRedirect("readme.html");
     
     ok = false;
-		output = "<error>Invalid parameters</error>";
-	}
-	
-	if (ok) {
-		action = request.getParameter("action").toLowerCase();
-		username = request.getParameter("username").toLowerCase();
-		auth = request.getParameter("auth");
-		id = request.getParameter("id");
+    output = "<error>Invalid parameters</error>";
+  }
+  
+  if (ok) {
+    action = request.getParameter("action").toLowerCase();
+    username = request.getParameter("username").toLowerCase();
+    auth = request.getParameter("auth");
+    id = request.getParameter("id");
     
     output = "<parameters>";
     output += "<action>" + action + "</action>";
     output += "<id>" + id + "</id>";
     output += "</parameters>";
-	}
+  }
   
   if (ok) {
     try {
@@ -89,12 +89,12 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
       /* get array of elements from api user role */
       String[] apiUserRoleElements = apiUserRole.split(":");
       
-      if (apiUserRoleElements.length == 2) {			
+      if (apiUserRoleElements.length == 2) {      
         String apiUserRoleStub = apiUserRoleElements[1];
         
         if (!apiUserRoleStub.equals(apiReadRole)) {
           ok = false;
-          output = "<error>API User role not set</error>";		
+          output = "<error>API User role not set</error>";    
         }
 
         if (ok) {
@@ -107,7 +107,7 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
           
           if (!authResults.toLowerCase().equals(username)) {
             ok = false;
-            output = "<error>API User Authorization Fail</error>";		
+            output = "<error>API User Authorization Fail</error>";    
           }
           
         }
@@ -121,7 +121,7 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
     }
   }
   
-	if (ok) {
+  if (ok) {
     if (action.equals("getuserbyusername")) {
       
       try {
@@ -211,7 +211,7 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
         output = "<error>Course not found</error>";
       }  
       
-		} else if (action.equals("getgradesbycourseid")) {
+    } else if (action.equals("getgradesbycourseid")) {
       
       try {
         /* get course details using supplied id */
@@ -363,11 +363,11 @@ public class LocalAuthenticationModule extends BaseAuthenticationModule {
         output = "<error>Course not found [" + e.getMessage() + "]</error>";
       }
       
-		} else {
-			ok = false;
-			output = "<error>Invalid action</error>";
-		}
-	}
+    } else {
+      ok = false;
+      output = "<error>Invalid action</error>";
+    }
+  }
 %>
 
 <results><%= output %></results>

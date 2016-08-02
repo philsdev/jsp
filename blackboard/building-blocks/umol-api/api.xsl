@@ -16,7 +16,7 @@
   
   <xsl:template match="results/parameters">
     <h3>Parameters</h3>
-	
+  
     <table class="vert">
       <tr>
         <th>Action</th>
@@ -99,7 +99,7 @@
    
   <xsl:template match="results/course">
     <h3>Course</h3>
-	
+  
     <table class="vert">
       <tr>
         <th>Batch ID</th>
