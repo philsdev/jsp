@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>UMOL API Instructions</title>
+    <link type="text/css" rel="stylesheet" href="api.css" media="all">
+  </head>
+  
+  <body>
+	<h1>UMassOnline API Instructions</h1>
+  
+    <h3>POST URL</h3>
+    
+    <p>API calls are made to the following URL, depending on the target environment:</p>
+    
+    <table>
+      <tr>
+        <th>Environment</th>
+        <th>POST URL</th>
+      </tr>
+      <tr>
+        <td>Test</td>
+        <td>https://{your.test.hostname}/webapps/umol-umol-api-BBLEARN/</td>
+      </tr>
+      <tr>
+        <td>Production</td>
+        <td>https://{your.prod.hostname}/webapps/umol-umol-api-BBLEARN/</td>
+      </tr>
+    </table>
+    
+    <h3>POST Parameters</h3>
+    
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Required</th>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td>Supplied by UMOL</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>auth</td>
+        <td>Supplied by UMOL</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>action</td>
+        <td>Method name, listed below</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>Identifier</td>
+        <td>Yes</td>
+      </tr>
+    </table>
+    
+    <h3>Possible Actions (choose one)</h3>
+    
+    <table>
+      <tr>
+        <th>Method Name</th>
+        <th>Returns</th>
+        <th>ID Parameter Basis</th>
+      </tr>
+      <tr>
+        <td>GetUserByUsername</td>
+        <td>User details</td>
+        <td>Username</td>
+      </tr>
+      <tr>
+        <td>GetCoursesByUsername</td>
+        <td>User and their course memberships</td>
+        <td>Username</td>
+      </tr>
+      <tr>
+        <td>GetCourseByCourseID</td>
+        <td>Course details</td>
+        <td>Course ID</td>
+      </tr>
+      <tr>
+        <td>GetGradesByCourseID</td>
+        <td>Grades for course members with student role</td>
+        <td>Course ID</td>
+      </tr>
+    </table>
+    
+    <h3>Sample API Request</h3>
+    
+    <p><strong>Example:</strong> Get the details for a course with the ID of "ART-205":</p>
+
+    <div class="code-box">
+      <code>POST https://mycourses.umassonline.net/webapps/umol-umol-api-BBLEARN/
+
+username=test
+auth=1234
+action=getCourseByCourseID
+id=ART-205</code>
+    </div>
+    
+    <h3>Sample API Response</h3>
+    
+    <p>The API will return the following XML for the request above:</p>
+
+    <div class="code-box">
+      <code>&lt;results&gt;
+  &lt;course&gt;
+    &lt;batch_id&gt;ART-205&lt;/batch_id&gt;
+    &lt;course_id&gt;ART-205&lt;/course_id&gt;
+    &lt;description&gt;ART 205 Fall 2013&lt;/description&gt;
+    &lt;is_available&gt;true&lt;/is_available&gt;
+    &lt;is_child&gt;false&lt;/is_child&gt;
+    &lt;is_parent&gt;false&lt;/is_parent&gt;
+    &lt;title&gt;ART 205 Fall 2013 Session&lt;/title&gt;
+  &lt;/course&gt;
+&lt;/results&gt;</code>
+    </div>
+   
+  </body>
+</html>

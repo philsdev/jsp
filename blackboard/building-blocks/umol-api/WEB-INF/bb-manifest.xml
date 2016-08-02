@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <plugin>
+    <name value="UMOL API" />
+    <handle value="umol-api" />
+    <version value="1.3" />
+    <requires>
+      <bbversion value="9.1" />
+    </requires>
+    <vendor>
+      <id value="umol" />
+      <name value="UMassOnline" />
+      <url value="http://www.umassonline.net" />
+      <description value="UMassOnline" />
+    </vendor>
+    <application-defs>
+      <application 
+        handle="umol-api" 
+        is-course-tool="false"
+        is-group-tool="false"
+        is-org-tool="false" 
+        is-sys-tool="true"
+        can-allow-guest="true"
+        name="UMOL API">
+        <links>
+          <link>
+            <type value="system_tool" />
+            <name value="UMOL API" />
+            <url value="index.jsp" />
+            <description value="UMassOnline API" />
+          </link>
+        </links>
+      </application>
+    </application-defs>
+    <permissions>
+      <permission type="attribute" name="user.personalinfo" actions="get" />
+      <permission type="attribute" name="user.authinfo" actions="get" />
+      <permission type="attribute" name="Group" actions="get" />
+      <permission type="attribute" name="GroupMembership" actions="get" />
+    </permissions>
+  </plugin>
+</manifest>
