@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <plugin>
+    <name value="Admin Item Lookup" />
+    <handle value="umol-lookup" />
+    <version value="1.24" />
+    <requires>
+      <bbversion value="9.1" />
+    </requires>
+    <vendor>
+      <id value="umol" />
+      <name value="UMassOnline" />
+      <url value="http://www.umassonline.net" />
+      <description value="UMassOnline" />
+    </vendor>
+    <application-defs>
+      <application 
+        handle="umol-lookup" 
+        is-course-tool="false"
+        is-group-tool="false"
+        is-org-tool="false" 
+        is-sys-tool="true"
+        name="Admin Item Lookup">
+        <links>
+          <link>
+            <type value="system_tool" />
+            <name value="Admin Item Lookup" />
+            <url value="index.jsp" />
+            <description value="UMassOnline Admin Item Lookup" />
+          </link>
+        </links>
+      </application>
+    </application-defs>
+    <permissions>
+      <permission type="attribute" name="user.personalinfo" actions="get" />
+      <permission type="attribute" name="user.authinfo" actions="get" />
+      <permission type="attribute" name="user.cardnumber" actions="get" />
+    </permissions>
+  </plugin>
+</manifest>
